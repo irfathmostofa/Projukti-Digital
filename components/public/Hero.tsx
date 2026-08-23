@@ -13,23 +13,33 @@ interface HeroProps {
 
 export function Hero({ section, statistics }: HeroProps) {
   const reduce = useReducedMotion();
-  const content = (section.content as {
-    badge?: string;
-    primaryCta?: { label?: string; url?: string };
-    secondaryCta?: { label?: string; url?: string };
-    heroImage?: string;
-    statistics?: { number: number; suffix?: string; label: string }[];
-  } | null) ?? {};
+  const content =
+    (section.content as {
+      badge?: string;
+      primaryCta?: { label?: string; url?: string };
+      secondaryCta?: { label?: string; url?: string };
+      heroImage?: string;
+      statistics?: { number: number; suffix?: string; label: string }[];
+    } | null) ?? {};
 
   const badge = content.badge ?? "Premium Software & Digital Agency";
   const heading = section.title ?? "Build Smarter. Grow Faster.";
   const description =
     section.subtitle ??
     "We build powerful software products, custom digital solutions, and data-driven marketing systems for modern businesses.";
-  const primaryCta = content.primaryCta ?? { label: "Explore Products", url: "/products" };
-  const secondaryCta = content.secondaryCta ?? { label: "Start Your Project", url: "/contact" };
+  const primaryCta = content.primaryCta ?? {
+    label: "Explore Products",
+    url: "/products",
+  };
+  const secondaryCta = content.secondaryCta ?? {
+    label: "Start Your Project",
+    url: "/contact",
+  };
   const heroImage = content.heroImage;
-  const stats = Array.isArray(content.statistics) && content.statistics.length ? content.statistics : statistics;
+  const stats =
+    Array.isArray(content.statistics) && content.statistics.length
+      ? content.statistics
+      : statistics;
 
   const fadeUp = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
@@ -41,9 +51,18 @@ export function Hero({ section, statistics }: HeroProps) {
     <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
       {/* Animated background */}
       <div className="absolute inset-0 bg-grid opacity-60" aria-hidden="true" />
-      <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/15 blur-[140px]" aria-hidden="true" />
-      <div className="animate-blob absolute -left-24 top-24 h-72 w-72 rounded-full bg-sky-400/10 blur-[100px]" aria-hidden="true" />
-      <div className="animate-blob animation-delay-2000 absolute -right-24 top-40 h-72 w-72 rounded-full bg-indigo-400/10 blur-[100px]" aria-hidden="true" />
+      <div
+        className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/15 blur-[140px]"
+        aria-hidden="true"
+      />
+      <div
+        className="animate-blob absolute -left-24 top-24 h-72 w-72 rounded-full bg-sky-400/10 blur-[100px]"
+        aria-hidden="true"
+      />
+      <div
+        className="animate-blob animation-delay-2000 absolute -right-24 top-40 h-72 w-72 rounded-full bg-indigo-400/10 blur-[100px]"
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -72,7 +91,10 @@ export function Hero({ section, statistics }: HeroProps) {
               {description}
             </motion.p>
 
-            <motion.div {...fadeUp(0.3)} className="mt-9 flex flex-wrap items-center gap-4">
+            <motion.div
+              {...fadeUp(0.3)}
+              className="mt-9 flex flex-wrap items-center gap-4"
+            >
               <Link
                 href={primaryCta.url ?? "/products"}
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-primary/40"
@@ -102,7 +124,9 @@ export function Hero({ section, statistics }: HeroProps) {
                       {stat.number}
                       <span className="text-primary">{stat.suffix ?? "+"}</span>
                     </dd>
-                    <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </motion.dl>
@@ -111,7 +135,9 @@ export function Hero({ section, statistics }: HeroProps) {
 
           {/* Hero visual */}
           <motion.div
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 }}
+            initial={
+              reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 }
+            }
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
             className="relative hidden lg:block"
@@ -126,7 +152,10 @@ export function Hero({ section, statistics }: HeroProps) {
                   priority
                   className="h-auto w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" aria-hidden="true" />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"
+                  aria-hidden="true"
+                />
               </div>
             ) : (
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
@@ -141,14 +170,19 @@ export function Hero({ section, statistics }: HeroProps) {
                       { h: "h-24", color: "bg-primary/70" },
                       { h: "h-14", color: "bg-sky-400/60" },
                     ].map((bar, i) => (
-                      <div key={i} className={`${bar.h} ${bar.color} rounded-lg opacity-80`} />
+                      <div
+                        key={i}
+                        className={`${bar.h} ${bar.color} rounded-lg opacity-80`}
+                      />
                     ))}
                   </div>
                 </div>
                 <div className="absolute bottom-5 left-5 right-5 rounded-xl border border-border bg-background/80 p-4 backdrop-blur">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">Monthly Revenue</p>
+                      <p className="text-xs text-muted-foreground">
+                        Monthly Revenue
+                      </p>
                       <p className="text-xl font-bold">$128,400</p>
                     </div>
                     <span className="rounded-full bg-emerald-500/15 px-2.5 py-1 text-xs font-semibold text-emerald-500">

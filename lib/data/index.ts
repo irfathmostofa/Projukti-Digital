@@ -224,8 +224,8 @@ export async function getStatistics() {
   if (Array.isArray(stats) && stats.length > 0) return stats;
   return [
     { number: 50, suffix: "+", label: "Projects Delivered" },
-    { number: 30, suffix: "+", label: "Happy Clients" },
+    { number: 50, suffix: "+", label: "Happy Clients" },
     { number: 5, suffix: "+", label: "Years Experience" },
-    { number: 99, suffix: "%", label: "Client Satisfaction" },
+    { number: 100, suffix: "%", label: "Client Satisfaction" },
   ];
 }
