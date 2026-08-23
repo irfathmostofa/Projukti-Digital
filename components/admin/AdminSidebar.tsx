@@ -18,7 +18,6 @@ import {
   LogOut,
   ExternalLink,
   ListOrdered,
-  LayoutTemplate,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -34,7 +33,6 @@ const nav = [
   { href: "/admin/faqs", label: "FAQs", icon: HelpCircle },
   { href: "/admin/testimonials", label: "Testimonials", icon: Quote },
   { href: "/admin/team", label: "Team", icon: Users },
-  { href: "/admin/pages", label: "Pages", icon: LayoutTemplate },
   { href: "/admin/leads", label: "Leads", icon: Inbox },
   { href: "/admin/media", label: "Media", icon: Image },
   { href: "/admin/navigation", label: "Navigation", icon: ListOrdered },
@@ -120,7 +118,7 @@ export function AdminSidebar() {
       </div>
 
       {/* Navigation - Scrollable */}
-      <nav className="flex-1 overflow-y-auto p-3 space-y-1 min-h-0">
+      <nav className="flex-1 overflow-y-auto p-3 space-y-1 min-h-0 custom-scrollbar">
         {nav.map((item) => {
           const active = pathname.startsWith(item.href);
           return (
@@ -130,7 +128,7 @@ export function AdminSidebar() {
               onClick={() => setOpen(false)}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
-                "hover:bg-accent hover:text-foreground",
+                "hover:bg-accent hover:text-foreground ",
                 active ? "bg-primary/10 text-primary" : "text-muted-foreground",
                 collapsed && "justify-center px-2",
               )}
@@ -240,6 +238,38 @@ export function AdminSidebar() {
           </Button>
         </div>
       </aside>
+      {/* Global scrollbar styles */}
+      <style jsx global>{`
+        /* Custom thin transparent scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(156, 163, 175, 0.15);
+          border-radius: 20px;
+          transition: background 0.3s ease;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(156, 163, 175, 0.35);
+        }
+
+        /* Firefox support */
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(156, 163, 175, 0.15) transparent;
+        }
+
+        .custom-scrollbar:hover {
+          scrollbar-color: rgba(156, 163, 175, 0.35) transparent;
+        }
+      `}</style>
     </>
   );
 }
