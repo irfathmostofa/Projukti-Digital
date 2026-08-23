@@ -18,6 +18,7 @@ import {
   LogOut,
   ExternalLink,
   ListOrdered,
+  LayoutTemplate,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -33,6 +34,7 @@ const nav = [
   { href: "/admin/faqs", label: "FAQs", icon: HelpCircle },
   { href: "/admin/testimonials", label: "Testimonials", icon: Quote },
   { href: "/admin/team", label: "Team", icon: Users },
+  { href: "/admin/pages", label: "Pages", icon: LayoutTemplate },
   { href: "/admin/leads", label: "Leads", icon: Inbox },
   { href: "/admin/media", label: "Media", icon: Image },
   { href: "/admin/navigation", label: "Navigation", icon: ListOrdered },

@@ -110,27 +110,6 @@ export function Hero({ section, statistics }: HeroProps) {
                 {secondaryCta.label ?? "Start Your Project"}
               </Link>
             </motion.div>
-
-            {/* Statistics */}
-            {stats.length > 0 && (
-              <motion.dl
-                {...fadeUp(0.4)}
-                className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4"
-              >
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <dt className="sr-only">{stat.label}</dt>
-                    <dd className="text-3xl font-bold text-foreground sm:text-4xl">
-                      {stat.number}
-                      <span className="text-primary">{stat.suffix ?? "+"}</span>
-                    </dd>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </motion.dl>
-            )}
           </div>
 
           {/* Hero visual */}
